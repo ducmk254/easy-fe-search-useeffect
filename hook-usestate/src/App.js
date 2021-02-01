@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InputBox from "./components/InputBox";
 import TodoList from "./components/TodoList/index";
 const Uid = require("uid-generator");
@@ -30,7 +30,7 @@ function App() {
 
   function handleTodoClick(todo) {
     // remove todo tồn tại trong list
-    
+
     const index = todoList.findIndex((item) => item.id === todo.id);
     if (index < 0) return;
     const newTodoList = [...todoList];
@@ -41,11 +41,15 @@ function App() {
   function handleInputSubmit(value) {
     console.log(value);
     const newtodos = [...todoList];
-    const id =  new Uid().baseEncoding;
-    newtodos.push({ id: id, title: value });
+    const id = new Uid().baseEncoding;
+    newtodos.push({ id: id, ...value });
     setTodoList(newtodos);
   }
+  useEffect(() => {
+    // get API
 
+    return () => {};
+  });
   return (
     <div className="App">
       <InputBox todosSubmit={handleInputSubmit} />

@@ -4,7 +4,9 @@ export default function InputBox(props) {
   const [value, setValue] = useState("");
   function handleSubmitForm(e) {
     e.preventDefault(); // chan reload form khi submit
-    props.todosSubmit(value);
+    if(!props.todosSubmit) return;
+    const formValue = {title: value}
+    props.todosSubmit(formValue);
     setValue("");
   }
   function handleChangeInput(e) {
