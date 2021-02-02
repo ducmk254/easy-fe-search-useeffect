@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import InputBox from "./components/InputBox";
+import PostList from "./components/PostList";
 import TodoList from "./components/TodoList/index";
 const Uid = require("uid-generator");
 
@@ -27,6 +28,24 @@ function App() {
     { id: 2, title: "I miss you " },
     { id: 3, title: "I hate you " },
   ]);
+  const [posts, setPosts] = useState([]);
+  const urlPost =
+    "http://js-post-api.herokuapp.com/api/posts?_limit=10&_page=1";
+  useEffect(() => {
+    // get API
+    async function getPostList(url) {
+      try {
+        const res = await fetch(urlPost);
+        const resJson = await res.json();
+        setPosts(resJson.data);
+      } catch (e) {
+        console.log("Loi: " + e);
+      }
+    }
+
+    getPostList(urlPost);
+    return () => {};
+  }, []);
 
   function handleTodoClick(todo) {
     // remove todo tồn tại trong list
@@ -45,15 +64,13 @@ function App() {
     newtodos.push({ id: id, ...value });
     setTodoList(newtodos);
   }
-  useEffect(() => {
-    // get API
 
-    return () => {};
-  });
   return (
     <div className="App">
       <InputBox todosSubmit={handleInputSubmit} />
       <TodoList todos={todoList} onTodoClick={handleTodoClick} />
+
+      <PostList posts={posts} />
     </div>
   );
 }
