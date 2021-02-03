@@ -18,7 +18,7 @@ function Pagination(props) {
         }
     }
     return (
-        <div>
+        <div className="pagination">
             <button className="pagination-btn" disabled={_page <= 1} onClick={() => handleChangePage(_page - 1)}>Prev</button>
             <button className="pagination-btn" disabled={_page >= totalPage} onClick={() => handleChangePage(_page + 1)}>Next</button>
         </div>
