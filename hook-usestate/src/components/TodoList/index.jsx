@@ -13,7 +13,7 @@ TodoList.defaultProps = {
 
 function TodoList(props) {
   const {todos, onTodoClick} = props;
-  console.log(todos);
+  
 
   function handleClick(todo) {
     if (onTodoClick) {

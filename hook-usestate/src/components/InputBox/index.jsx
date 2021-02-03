@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import './InputBox.scss';
 export default function InputBox(props) {
   const [value, setValue] = useState("");
   function handleSubmitForm(e) {
@@ -15,7 +15,7 @@ export default function InputBox(props) {
   return (
     <div>
       <form onSubmit={handleSubmitForm}>
-        <input type="text" value={value} onChange={handleChangeInput} />
+        <input type="text" value={value} onChange={handleChangeInput} className="input-box"/>
       </form>
     </div>
   );

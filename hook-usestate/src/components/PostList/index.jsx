@@ -1,13 +1,13 @@
 import React from "react";
-
+import './PostList.scss';
 export default function PostList(props) {
   const { posts } = props;
   return (
-    <div>
+    <div className="post-list">
       {posts.map((item) => {
         return (
-          <ul key={item.id}>
-            <li>
+          <ul key={item.id} className="post-list__item">
+            {/* <li>
               <span>Title: </span>
               <span>{item.title}</span>
             </li>
@@ -18,9 +18,9 @@ export default function PostList(props) {
             <li>
               <span>Description: </span>
               <span>{item.title}</span>
-            </li>
+            </li> */}
             <li>
-              <img src={item.imageUrl} alt="post" width="30%" height="30%" />
+              <img src={item.imageUrl} alt="post" />
             </li>
           </ul>
         );

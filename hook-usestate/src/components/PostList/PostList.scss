@@ -1,0 +1,33 @@
+@keyframes showPostList {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.post-list {
+    width: 1024px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    height: auto;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.post-list__item {
+    width: 49%;
+    list-style-type: none;
+    margin-bottom: 5px;
+}
+.post-list__item li {
+    height: 180px;
+    position: relative;
+}
+
+.post-list__item li img {
+    width: 100%;
+    height: 100%;
+    animation: showPostList 5s infinite;
+}
